@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center;
+            background-color: #0F172A;
+            padding: 10px 15px;
+            margin: 10px 15px;
+            gap: 5px;
+            width: 50vw;
+            border-radius: 20px;
+        }
+
+        .input-container .bash-text {
+            font-size: .8rem;
+            color: white;
+        }
+
+        .input-container .bash-text .user {
+            color: #E879F9;
+        }
+
+        .input-container .bash-text .vm {
+            color: #2DD4BF;
+        }
+
+        .input-container .bash-text .char {
+            color: #A78BFA;
+        }
+
+        .input-container input[type=text]#input1 {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            color: white;
+        }
+
+        .input-container input[type=text]#input2 {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            color: white;
+        }
+
+        .input-container input[type=text]#input3 {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            color: white;
+        }
+
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .button {
+            margin-bottom: 20px;
+            width: 110px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: rgb(161, 255, 20);
+            border-radius: 30px;
+            color: rgb(19, 19, 19);
+            font-weight: 600;
+            border: none;
+            position: relative;
+            cursor: pointer;
+            transition-duration: .2s;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.116);
+            padding-left: 8px;
+            transition-duration: .5s;
+        }
+
+        .svgIcon {
+            height: 25px;
+            transition-duration: 1.5s;
+        }
+
+        .bell path {
+            fill: rgb(19, 19, 19);
+        }
+
+        .button:hover {
+            background-color: rgb(192, 255, 20);
+            transition-duration: .5s;
+        }
+
+        .button:active {
+            transform: scale(0.97);
+            transition-duration: .2s;
+        }
+
+        .button:hover .svgIcon {
+            transform: rotate(250deg);
+            transition-duration: 1.5s;
+        }
+
+
+
+        #prev,
+        #prev1 {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+                sans-serif;
+            background-color: #3f5efb;
+            border-radius: 50px;
+            height: 6vh;
+            width: auto;
+            text-align: center;
+            font-size: 4vh;
+            font-weight: 600;
+            background: linear-gradient(90deg, #E879F9 0%, #2DD4BF 100%);
+            color: #000;
+            border-style: solid;
+            border-color: rgb(19, 19, 19);
+            margin-bottom: 20px;
+        }
+
+        #outbox {
+            /* margin-right: 1000vw; */
+            padding: 20px;
+            color: #2DD4BF;
+            font-size: 3vh;
+            background-color: #2e2e2e;
+            width: 50vw;
+            height: auto;
+            border-radius: 50px;
+            border-style: solid;
+            border-width: 2px;
+            border-color: #fc466b;
+            align-items: center;
+
+        }
+
+        .printbtn {
+            display: flex;
+            align-items: center;
+            font-family: inherit;
+            font-weight: 500;
+            font-size: 17px;
+            padding: 0.8em 1.3em 0.8em 0.9em;
+            color: white;
+            background: #ad5389;
+            background: linear-gradient(to right, #9618a4, #302b63, #24243e);
+            border: none;
+            letter-spacing: 0.05em;
+            border-style: solid;
+            border-width: 2px;
+            border-color: black;
+            border-radius: 50px;
+            margin-bottom: 10px;
+        }
+
+        button span {
+            transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <!-- ---------three input--------------------- -->
+
+
+        <div class="input-container">
+            <p class="bash-text">
+                <span class="user">basename</span><span class="vm">@sequence</span>:<span class="char">~</span>$
+            </p>
+            <input id="input1" placeholder="enter hre" type="text">
+        </div>
+
+        <div class="input-container">
+            <p class="bash-text">
+                <span class="user">fremnumber</span><span class="vm">@sequence</span>:<span class="char">~</span>$
+            </p>
+            <input id="input2" placeholder="enter hre" type="text">
+        </div>
+
+        <div class="input-container">
+            <p class="bash-text">
+                <span class="user">extantion</span><span class="vm">@sequence</span>:<span class="char">~</span>$
+            </p>
+            <input id="input3" placeholder="enter hre" type="text">
+        </div>
+
+        <!-- -----------------genrate ------------------------------- -->
+
+
+        <button class="button" onclick="addInput()">
+            <svg class="svgIcon" viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm50.7-186.9L162.4 380.6c-19.4 7.5-38.5-11.6-31-31l55.5-144.3c3.3-8.5 9.9-15.1 18.4-18.4l144.3-55.5c19.4-7.5 38.5 11.6 31 31L325.1 306.7c-3.2 8.5-9.9 15.1-18.4 18.4zM288 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z">
+                </path>
+            </svg>
+            Genrate
+        </button>
+
+        <!-- --------------------frem reprasenter---------------------------- -->
+
+
+        <input id="prev1" placeholder="starting frame"></input>
+        <input id="prev" placeholder="ending frame"></input>
+
+        <!-- -----------------------print ---------------------------------- -->
+
+
+        <button class="printbtn" onclick="generateSequence()">
+            <!-- <box-icon name='copy' type='solid' color='#2a46d5'></box-icon> -->
+            <span>&nbsp;print text</span>
+        </button>
+
+
+        
+        <!-- --------------------------genrated text-------------------------- -->
+        
+        <textarea id="outbox"></textarea>
+        
+        <button class="printbtn" onclick="copy('outbox')">
+            <box-icon name='copy' type='solid' color='#2a46d5'></box-icon>
+            <span>&nbsp;copy text</span>
+        </button>
+
+
+    </div>
+    <script>
+        var formate;
+        var fremNum;
+        var extn;
+        var prev1;
+        var prev;
+
+        function addInput() {
+            formate = document.getElementById("input1").value;
+            fremNum = document.getElementById("input2").value;
+            extn = document.getElementById("input3").value;
+            console.log(`${formate} ${fremNum} ${extn} `);
+            prevbox();
+        }
+
+        function prevbox() {
+            prev1 = formate + '00000' + extn;
+            prev = formate + String(fremNum) + extn;
+
+            document.getElementById('prev1').value = prev1;
+            document.getElementById('prev').value = prev;
+        }
+
+
+        function generateSequence() {
+            // Generate a sequence based on the input
+            const sequence = [];
+            for (let i = 1; i <= fremNum; i++) {
+                sequence.push(formate + i.toString().padStart(5, '0') + extn);
+            }
+
+            // Display the sequence in the output container
+            const outbox = document.getElementById('outbox');
+            // console.log(sequence.join('\n'));
+            outbox.textContent = sequence.join('\n');
+            // myFunction()
+        }
+        let copy = (outbox) => {
+      //Selects the text in the <input> elemet
+      document.getElementById('outbox').select();
+      //Copies the selected text to clipboard
+      document.execCommand("copy");
+    };
+
+
+
+    </script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</body>
+
+</html>
