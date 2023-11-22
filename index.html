@@ -128,14 +128,16 @@
             font-size: 4vh;
             font-weight: 600;
             background: linear-gradient(90deg, #E879F9 0%, #2DD4BF 100%);
-            color: #000;
+            color: #FFF;
             border-style: solid;
             border-color: rgb(19, 19, 19);
             margin-bottom: 20px;
         }
 
         #outbox {
-            /* margin-right: 1000vw; */
+            overflow: hidden;
+            text-align: center;
+            margin-bottom: 20px;
             padding: 20px;
             color: #2DD4BF;
             font-size: 3vh;
@@ -184,21 +186,21 @@
             <p class="bash-text">
                 <span class="user">basename</span><span class="vm">@sequence</span>:<span class="char">~</span>$
             </p>
-            <input id="input1" placeholder="enter hre" type="text">
+            <input id="input1" placeholder="enter here" type="text">
         </div>
 
         <div class="input-container">
             <p class="bash-text">
                 <span class="user">fremnumber</span><span class="vm">@sequence</span>:<span class="char">~</span>$
             </p>
-            <input id="input2" placeholder="enter hre" type="text">
+            <input id="input2" placeholder="enter here" type="text">
         </div>
 
         <div class="input-container">
             <p class="bash-text">
                 <span class="user">extantion</span><span class="vm">@sequence</span>:<span class="char">~</span>$
             </p>
-            <input id="input3" placeholder="enter hre" type="text">
+            <input id="input3" placeholder="enter here" type="text">
         </div>
 
         <!-- -----------------genrate ------------------------------- -->
@@ -228,13 +230,13 @@
         </button>
 
 
-        
+
         <!-- --------------------------genrated text-------------------------- -->
-        
+
         <textarea id="outbox"></textarea>
-        
+
         <button class="printbtn" onclick="copy('outbox')">
-            <box-icon name='copy' type='solid' color='#2a46d5'></box-icon>
+            <box-icon name='copy' type='solid' color='grey'></box-icon>
             <span>&nbsp;copy text</span>
         </button>
 
@@ -265,24 +267,24 @@
 
 
         function generateSequence() {
-            // Generate a sequence based on the input
+
             const sequence = [];
             for (let i = 1; i <= fremNum; i++) {
                 sequence.push(formate + i.toString().padStart(5, '0') + extn);
             }
 
-            // Display the sequence in the output container
+
             const outbox = document.getElementById('outbox');
-            // console.log(sequence.join('\n'));
+
             outbox.textContent = sequence.join('\n');
-            // myFunction()
+
         }
         let copy = (outbox) => {
-      //Selects the text in the <input> elemet
-      document.getElementById('outbox').select();
-      //Copies the selected text to clipboard
-      document.execCommand("copy");
-    };
+
+            document.getElementById('outbox').select();
+            
+            document.execCommand("copy");
+        };
 
 
 
